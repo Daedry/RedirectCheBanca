@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulazione banca</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+      padding: 40px;
+    }
+    .box {
+      background: white;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+      border-radius: 8px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>Motivo accesso</h2>
+    <textarea id="reason" rows="4" style="width:100%"></textarea>
+    <button onclick="goBack()">Conferma</button>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const recordId = params.get('recordId');
+
+    function goBack() {
+      const token = 'mock-token-123';
+
+      const returnUrl = `https://TUODOMINIO.lightning.force.com/lightning/r/Account/${recordId}/view?accessGranted=true&token=${token}`;
+
+      window.location.href = returnUrl;
+    }
+  </script>
+</body>
+</html>
